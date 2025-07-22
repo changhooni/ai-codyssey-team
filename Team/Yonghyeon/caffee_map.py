@@ -40,7 +40,7 @@ def merge_dataframes(area_struct_with_category, area_map):
         on=['x', 'y'],
         how='outer'
     )
-    # ✅ 수정: na_last 매개변수 제거하고 NaN 처리 개선
+    # na_last 매개변수 제거하고 NaN 처리 개선
     merged_df = merged_df.sort_values(by='area')
     merged_df = merged_df.reset_index(drop=True)
     return merged_df
