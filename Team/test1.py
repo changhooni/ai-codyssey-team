@@ -12,11 +12,11 @@ def merged_data(x, y, k):
                         , how='inner')
 
     #정렬 순서 지정
-    merged_df = merged_df.sort_values(by=['area', 'x', 'y']
+    merged_df = merged_df.sort_values(by=['area']
                                     , ascending=True, ignore_index=True)
 
     #컬럼 area값이 1만 불러오기
-    merged_df = merged_df[merged_df['area'] == 1]
+    #merged_df = merged_df[merged_df['area'] == 1]
 
     #NaN 값을 공백으로 처리
     merged_df = merged_df.fillna('')
@@ -94,9 +94,10 @@ def main():
     for _, row in summary.iterrows():
         print(f"{row['category_name']:<20} | {row['전체개수']:>4} | {row['공사중']:>6} | {row['정상']:>4}")
 
-    #print(result)
+    print(result)
     #CSV 파일 생성
-    #result.to_csv('../dataFile/caffee_data.csv', index=False)
+    result.to_csv('../dataFile/map_data1.csv', index=False)
+    summary.to_csv('../dataFile/summary.csv', index=False)
     
 
 if __name__ == '__main__':

@@ -8,7 +8,7 @@ def map_data(data_csv):
     return dt
 
 
-df = map_data('../dataFile/map_data.csv')
+df = map_data('../dataFile/map_data1.csv')
 #print(df.fillna(''))
 
 # 격자 크기 정의
@@ -18,9 +18,9 @@ x_max = df['x'].max()
 y_max = df['y'].max()
 
 # 격자 좌표 생성 (x는 1부터 x_max까지, y는 1부터 y_max까지)
-x = np.arange(1, x_max + 1)
+#x = np.arange(1, x_max + 1)
 #y = np.arange(y_max + 1, 1)
-y = np.arange(y_max, 0, -1)
+#y = np.arange(y_max, 0, -1)
 
 #n = len(df)
 #i = 1
@@ -29,7 +29,7 @@ y = np.arange(y_max, 0, -1)
 #    x = df[i]
 #    print(x)
 #    i = i+1
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(10, 8))
 ax = plt.gca()
 
 # 시각화 처리
@@ -62,10 +62,10 @@ legend_elements = [
 ax.legend(handles=legend_elements, loc='upper right')
 
 #plt.figure(figsize=(8, 6))  # 그림 크기 설정
-for x in range(1, x_max + 1):
+for x in range(1, x_max + 2):
     ax.axvline(x - 0.5, color='lightgrey', linestyle='--', linewidth=0.5)
 
-for y in range(1, y_max + 1):
+for y in range(1, y_max + 2):
     ax.axhline(y - 0.5, color='lightgrey', linestyle='--', linewidth=0.5)
     
 
@@ -116,6 +116,10 @@ for index, row in df.iterrows():
 
 # 그리드 추가
 #plt.grid(True)
+
+# 눈금 표시
+plt.xticks(np.arange(1, x_max + 1, 1))  # x축: 1 ~ x_max
+plt.yticks(np.arange(1, y_max + 1, 1))  # y축: 1 ~ y_max
 
 plt.gca().invert_yaxis()
 
