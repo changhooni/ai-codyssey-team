@@ -76,25 +76,34 @@ for index, row in df.iterrows():
     # 점 크기를 격자의 크기 비율에 맞게 설정
     size = (x_max * 10) # x값을 격자 크기에 비례하여 크기 설정
 
-    if row['category'] == 1 or row['category'] == 2:
+    if row['category'] in [1, 2] and row['ConstructionSite'] == 1:
+        plt.scatter(row['x'], row['y']
+                    , color='gray'
+                    , marker='s'
+                    , s=size
+                    )
+    elif row['category'] in [1, 2]:
         plt.scatter(row['x'], row['y']
                     , color='brown'
                     , marker='o'
                     , s=size
                     )
     elif row['category'] == 3:
-        plt.scatter(row['x'], row['y'], color='green'
+        plt.scatter(row['x'], row['y']
+                    , color='green'
                     , marker='^'
                     , s=size
                     )
     elif row['category'] == 4:
-        plt.scatter(row['x'], row['y'], color='green'
+        plt.scatter(row['x'], row['y']
+                    , color='green'
                     , marker='s'
                     , s=size
                     )
     else:
         if row['ConstructionSite'] == 1:
-            plt.scatter(row['x'], row['y'], color='gray'
+            plt.scatter(row['x'], row['y']
+                        , color='gray'
                         , marker='s'
                         , s=size
                        )

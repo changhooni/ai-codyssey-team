@@ -53,6 +53,8 @@ def main():
     for _, row in df.iterrows():
         if row.get('ConstructionSite', 0) == 1:
             grid[int(row['y'])][int(row['x'])] = 1  # y, x 순서에 주의!
+        elif row['category'] in [1, 2] and row.get('ConstructionSite', 0) == 1:
+            grid[y][x] = 1
 
     # MyHome 위치 찾기
     myhome = df[df['category'] == 3][['x', 'y']].iloc[0]
